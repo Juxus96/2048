@@ -4,28 +4,25 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-
-    private int currentNumber;
-    private Color tileColor;
-
-    public Tile()
-    {
-
-    }
+    [SerializeField] private Sprite[] sprites;
+    private int currentNumber = 0;
+    private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
-
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = sprites[currentNumber]; 
     }
 
-    private void Update()
+    public bool CheckSame(Tile tile)
     {
-        
+        return tile.currentNumber == currentNumber;
     }
 
-    private void NewTile()
+    public void UpgradeTile()
     {
-
+        currentNumber++;
+        spriteRenderer.sprite = sprites[currentNumber];
     }
 
 }
